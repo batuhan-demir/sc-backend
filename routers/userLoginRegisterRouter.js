@@ -4,7 +4,7 @@ const router = express.Router();
 
 const { sign } = require("../utils/jwt");
 
-const { findUser } = require("../controllers/userController")
+const { findUser, createUser } = require("../controllers/userController")
 
 router.post("/login", async (req, res) => {
 
@@ -26,6 +26,33 @@ router.post("/login", async (req, res) => {
         success: true,
         data: { token },
         message: "Login successful",
+        error: null
+    })
+
+})
+
+router.post("/register", async (req, res) => {
+
+    const { nameSurname, phone, password, address } = req.body;
+
+    const user = await findUser({ phone });
+
+    if (user)
+        return res.status(400).json({
+            success: false,
+            error: "User already exists",
+            message: null,
+            data: null
+        })
+
+    const newUser = await createUser({ nameSurname, phone, password, address });
+
+    const token = await sign({ _id: newUser._id });
+
+    return res.json({
+        success: true,
+        data: { token },
+        message: "User created successfully",
         error: null
     })
 

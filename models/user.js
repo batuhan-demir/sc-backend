@@ -18,8 +18,6 @@ const itemSchema = new mongoose.Schema({
 const userSchema = new mongoose.Schema({
     nameSurname: String,
 
-    email: String,
-
     password: String,
 
     phone: String,
