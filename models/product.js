@@ -12,7 +12,10 @@ const productSchema = new mongoose.Schema({
 
     description: String,
 
-    imageUrl: String
+    imageUrl: {
+        type: String,
+        default: "/images/defaultProduct.jpg"
+    }
 });
 
 module.exports = mongoose.model('Product', productSchema);
