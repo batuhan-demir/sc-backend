@@ -5,6 +5,14 @@ const { findUser, findUserById, createUser, updateUser, deleteUser } =
 
 const router = express.Router();
 
+const basketRouter = require("./userBasketRouter");
+const userLoginRegisterRouter = require("./userLoginRegisterRouter");
+
+const userMiddleware = require("../middlewares/userMiddleware");
+
+router.use("/", userLoginRegisterRouter);
+router.use("/basket", userMiddleware, basketRouter);
+
 router.get("/", async (req, res) =>
     res.json({
         success: true,
