@@ -2,15 +2,23 @@ const express = require('express');
 
 const router = express.Router();
 
-const { updateUser } = require("../controllers/userController");
-
 const { findProductById } = require("../controllers/productController")
 
 router.get("/", async (req, res) => {
-    const { basket } = req.user;
+    let { user } = req;
 
-    for (item of basket) {
-        basket.totalPrice = (basket.totalPrice || 0) + item.price;
+    user = await user.populate({
+        path: "basket.product",
+        model: "Product",
+    })
+
+    const basket = {
+        items: user.basket,
+        totalPrice: 0
+    }
+
+    for (item of basket.items) {
+        basket.totalPrice += item.product.price * item.quantity;
     }
 
     res.json({
