@@ -14,8 +14,10 @@ app.use(express.json());
 const PORT = process.env.PORT || 80;
 
 const userRouter = require('./routers/userRouter');
+const productRouter = require("./routers/productRouter");
 
 app.use('/user', userRouter);
+app.use('/product', productRouter);
 
 
 app.use((err, req, res, next) => {
