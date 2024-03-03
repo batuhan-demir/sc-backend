@@ -31,9 +31,6 @@ With /product endpoint, products can be listed, new products can be added, exist
 
 The /user/basket endpoint is used to list the products in the user's basket, add new products, complete the purchase, etc. Product information is stored as id and populated when needed.
 
-
-Translated with DeepL.com (free version)
-
 ## Contact
 
 [iletisim@bdemir.net](mailto:iletisim@bdemir.net)
