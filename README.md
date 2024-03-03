@@ -5,10 +5,7 @@ DouDel was developed as part of the Google Solution Challenge 2024 to address th
 ## Table of Contents
 
 - [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [Contributing](#contributing)
-- [License](#license)
+- [How It Works](#howitworks)
 - [Contact](#contact)
 
 ## Installation
